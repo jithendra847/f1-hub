@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Flag, Search, Menu, X, Film } from 'lucide-react';
+import { Flag, Search, Menu, X, Film, Sun, Moon } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../ui/Input';
 import NavigationOverlay from './NavigationOverlay';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Navbar({ onReplayIntro }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleSearchSubmit = (e) => {
@@ -58,8 +60,20 @@ export default function Navbar({ onReplayIntro }) {
             />
           </form>
 
-          {/* Right: Replay Intro Button */}
-          <div className="flex items-center gap-3">
+          {/* Right: Theme Toggle & Replay Intro Button */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-xl bg-f1-card shadow-soft-outer border border-f1-border text-f1-dark hover:text-f1-red transition-all flex items-center justify-center"
+              title={theme === 'light' ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            >
+              {theme === 'light' ? (
+                <Moon className="w-4 h-4 text-f1-dark" />
+              ) : (
+                <Sun className="w-4 h-4 text-amber-400" />
+              )}
+            </button>
+
             {onReplayIntro && (
               <button
                 onClick={onReplayIntro}

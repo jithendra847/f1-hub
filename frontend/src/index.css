@@ -4,9 +4,42 @@
 
 @layer base {
   :root {
+    color-scheme: light;
+
+    /* CLEAN LIGHT MOTORSPORT ENVIRONMENT TOKENS */
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #FFFFFF;
+    --bg-hover: rgba(0, 0, 0, 0.04);
+    --bg-inset: #F1F5F9;
+
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+
+    --border-primary: #E2E8F0;
+    --border-subtle: #F1F5F9;
+
+    --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    --card-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --card-shadow-hover: 0 12px 32px -4px rgba(15, 23, 42, 0.12);
+    --card-shadow-inset: inset 0 2px 4px rgba(15, 23, 42, 0.04);
+
+    --accent: #E10600;
+    --accent-glow: 0 4px 14px rgba(225, 6, 0, 0.25);
+
+    --chart-grid: #E2E8F0;
+    --chart-axis: #64748B;
+    --chart-tooltip-bg: #0F172A;
+    --chart-tooltip-text: #F8FAFC;
+    --chart-tooltip-border: #334155;
+  }
+
+  .dark {
     color-scheme: dark;
 
-    /* PERMANENT DARK MOTORSPORT ENVIRONMENT TOKENS */
+    /* DARK MOTORSPORT ENVIRONMENT TOKENS */
     --bg-primary: #0B0E14;
     --bg-secondary: #10141D;
     --bg-card: #151A24;
