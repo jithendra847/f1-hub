@@ -1,168 +1,496 @@
-# F1 Hub
+🏎️ F1 Hub
 
-F1 Hub is a full-stack web application for exploring Formula 1 race schedules, driver and constructor standings, historical race archives, circuit layouts, telemetry analytics, and news.
+«A full-stack Formula 1 analytics platform for exploring races, championship standings, historical data, circuits, telemetry, weather, and F1 news — all in one place.»
 
-## Features
+🌐 Live Demo: "f1-hub-olive.vercel.app" (https://f1-hub-olive.vercel.app) 
+---
 
-- **Race Calendar**: View complete season schedules, round details, and race information.
-- **Standings**: Real-time driver and constructor championship standings by season.
-- **Driver & Constructor Profiles**: Detailed stats, career information, and head-to-head driver comparisons.
-- **Historical Archive**: Ergast API-compatible historical season results, driver standings, and era breakdowns (1950–Present).
-- **Circuit Data**: Circuit specifications and interactive track layout visualizations.
-- **Telemetry & Analytics**: Championship progression trends, lap time breakdowns, and telemetry data powered by FastF1 and OpenF1.
-- **Race Weather**: Track weather reports and forecasts.
-- **F1 News Aggregator**: Latest Formula 1 news articles categorized by topic.
+frontend/public/screenshots/
+├── dashboard.png
+├── standings.png
+├── race-details.png
+├── telemetry.png
+└── circuits.png
 
-## Tech Stack
+"F1 Hub Dashboard" (frontend/public/screenshots/dashboard.png)
 
-### Frontend
-- **React 18** (Vite build tool)
-- **Tailwind CSS** (Custom styling)
-- **React Router v6** (Client-side routing)
-- **Recharts** (Data visualization charts)
-- **Axios** (HTTP client)
-- **Lucide React** (UI Icons)
+---
 
-### Backend
-- **Python 3.10+**
-- **FastAPI** (Async web framework)
-- **Uvicorn** (ASGI server)
-- **Pydantic v2** (Data validation & settings)
-- **HTTPX** (Async HTTP client for external APIs)
-- **FastF1 & Pandas** (Telemetry data processing)
+🎯 About the Project
 
-### Database
-- **PostgreSQL**
-- **SQLAlchemy 2.0** (Async ORM)
-- **AsyncPG** (PostgreSQL async database driver)
-- **Alembic** (Database schema migrations)
+F1 Hub is a full-stack Formula 1 analytics application designed to bring important Formula 1 information together in a single platform.
 
-### Data Sources
-- **Jolpica F1 API**: Ergast-compatible endpoint for historical seasons, results, and standings.
-- **OpenF1 API**: Real-time and recent session telemetry and timing data.
-- **FastF1**: Python package for accessing official F1 timing and telemetry data.
-- **Open-Meteo API**: Fallback weather data for circuit coordinates.
+Instead of switching between multiple sources for race schedules, championship standings, historical results, circuit information, telemetry, weather, and news, F1 Hub provides these features through one unified interface.
 
-## Project Structure
+The application combines a modern React frontend, FastAPI backend, PostgreSQL database, and multiple Formula 1 data providers to create a scalable foundation for F1 data exploration and analytics.
 
-```text
-formula1/
+---
+
+✨ Features
+
+🏁 Race Calendar
+
+- Complete Formula 1 season calendar
+- Race rounds and event information
+- Race session details
+- Upcoming and completed events
+
+🏆 Championship Standings
+
+- Driver championship standings
+- Constructor championship standings
+- Season-based standings
+- Championship progression analytics
+
+👨‍🏎️ Driver & Constructor Profiles
+
+- Driver directory
+- Driver career information
+- Constructor information
+- Driver statistics
+- Head-to-head driver comparisons
+
+📚 Historical F1 Archive
+
+- Historical Formula 1 seasons
+- Race results
+- Driver standings
+- Constructor standings
+- Historical championship data
+- Era-based exploration
+
+🏎️ Circuit Information
+
+- Circuit specifications
+- Circuit locations
+- Track information
+- Interactive circuit layout visualizations
+
+📊 Telemetry & Analytics
+
+- Lap timing data
+- Championship progression
+- Driver comparisons
+- Telemetry analytics
+- Session data
+- Data visualization using interactive charts
+
+Telemetry and timing information are powered by FastF1 and OpenF1.
+
+🌦️ Race Weather
+
+- Circuit weather information
+- Race-location weather data
+- Weather data fallback using Open-Meteo
+
+📰 F1 News
+
+- Latest Formula 1 news
+- Categorized news articles
+- External links to related articles
+
+---
+
+🚀 Key Technical Highlights
+
+- Full-stack React + FastAPI architecture
+- RESTful backend API
+- Asynchronous FastAPI services
+- PostgreSQL database
+- SQLAlchemy 2.0 async ORM
+- Alembic database migrations
+- External API integration
+- Formula 1 telemetry processing
+- Historical data ingestion
+- Interactive data visualization
+- Environment-based configuration
+- Modular backend provider architecture
+- Scalable separation between frontend, backend, database, and external data sources
+
+---
+
+🏗️ Architecture
+
+                         ┌──────────────────────┐
+                         │      F1 Hub UI       │
+                         │    React + Vite      │
+                         └──────────┬───────────┘
+                                    │
+                              REST API / HTTP
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │      FastAPI         │
+                         │      Backend         │
+                         └──────────┬───────────┘
+                                    │
+                ┌───────────────────┼───────────────────┐
+                │                   │                   │
+                ▼                   ▼                   ▼
+        ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+        │  PostgreSQL  │    │ F1 Providers │    │ Weather API  │
+        │   Database   │    │              │    │              │
+        └──────────────┘    │ • Jolpica    │    │ Open-Meteo   │
+                            │ • OpenF1     │    └──────────────┘
+                            │ • FastF1     │
+                            └──────────────┘
+
+Backend Data Flow
+
+External F1 APIs
+       │
+       ▼
+Provider Layer
+       │
+       ▼
+Service Layer
+       │
+       ▼
+Database / Processing
+       │
+       ▼
+FastAPI REST Endpoints
+       │
+       ▼
+React Frontend
+
+The backend follows a modular architecture where external data providers are separated from application business logic.
+
+---
+
+🛠️ Tech Stack
+
+Frontend
+
+- React 18
+- Vite
+- JavaScript
+- Tailwind CSS
+- React Router v6
+- Recharts
+- Axios
+- Lucide React
+
+Backend
+
+- Python 3.10+
+- FastAPI
+- Uvicorn
+- Pydantic v2
+- HTTPX
+- FastF1
+- Pandas
+
+Database
+
+- PostgreSQL
+- SQLAlchemy 2.0
+- AsyncPG
+- Alembic
+
+Data Sources
+
+Provider| Purpose
+Jolpica F1 API| Historical F1 data, race results and standings
+OpenF1 API| Recent session, timing and telemetry data
+FastF1| F1 timing, telemetry and analytics
+Open-Meteo| Weather data
+
+---
+
+📁 Project Structure
+
+f1-hub/
+│
 ├── backend/
-│   ├── alembic/              # Database migration scripts
+│   ├── alembic/
+│   │   └── ...                    # Database migrations
+│   │
 │   ├── app/
-│   │   ├── api/v1/endpoints/ # API route handlers (calendar, drivers, standings, etc.)
-│   │   ├── core/             # App config, logging, and security settings
-│   │   ├── db/               # Database session setup
-│   │   ├── models/           # SQLAlchemy database models
-│   │   ├── providers/        # External API integrations (Jolpica, OpenF1, FastF1, Weather)
-│   │   ├── schemas/          # Pydantic data schemas
-│   │   ├── services/         # Business logic & data ingestion services
-│   │   └── main.py           # FastAPI application entry point
-│   └── requirements.txt      # Python dependencies
+│   │   ├── api/
+│   │   │   └── v1/
+│   │   │       └── endpoints/      # API route handlers
+│   │   │
+│   │   ├── core/                  # Configuration, logging & security
+│   │   ├── db/                    # Database configuration & sessions
+│   │   ├── models/                # SQLAlchemy models
+│   │   ├── providers/             # External API integrations
+│   │   ├── schemas/               # Pydantic schemas
+│   │   ├── services/              # Business logic & data processing
+│   │   └── main.py                # FastAPI entry point
+│   │
+│   └── requirements.txt
+│
 ├── frontend/
-│   ├── public/               # Static assets (images, favicon, videos)
+│   ├── public/
+│   │   ├── screenshots/           # Project screenshots
+│   │   ├── images/
+│   │   └── ...
+│   │
 │   ├── src/
-│   │   ├── components/       # Reusable UI components & charts
-│   │   ├── pages/            # Application views (Home, Drivers, Historical, etc.)
-│   │   ├── services/         # Axios API client setup
-│   │   └── App.jsx           # Root layout and route configuration
-│   ├── package.json          # Node.js dependencies and scripts
-│   └── vite.config.js        # Vite configuration
+│   │   ├── components/            # Reusable UI components
+│   │   ├── pages/                 # Application pages
+│   │   ├── services/              # API client & services
+│   │   └── App.jsx                # Root application
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── .env.example                   # Environment variable template
+├── .gitignore
+├── fetch_openf1_layouts.py        # Circuit layout data utility
+├── package-lock.json
 └── README.md
-```
 
-## Getting Started
+---
 
-### Prerequisites
+⚙️ Getting Started
+
+Prerequisites
+
+Make sure the following are installed:
+
 - Node.js 18+
 - Python 3.10+
-- PostgreSQL database instance
+- PostgreSQL
+- Git
+- npm
 
-### 1. Backend Setup
+---
 
-Navigate to the `backend` directory:
-```bash
-cd backend
-```
+1. Clone the Repository
 
-Create and activate a virtual environment:
-```bash
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
+git clone https://github.com/jithendra847/f1-hub.git
+cd f1-hub
 
-# Windows
-python -m venv venv
-venv\Scripts\activate
-```
+---
 
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+2. Configure Environment Variables
 
-Start the FastAPI development server:
-```bash
-uvicorn app.main:app --reload --port 8000
-```
-The API documentation will be available at `http://localhost:8000/docs`.
+Create your local environment file from the provided template.
 
-### 2. Frontend Setup
+cp .env.example .env
 
-In a new terminal window, navigate to the `frontend` directory:
-```bash
-cd frontend
-```
+On Windows PowerShell:
 
-Install dependencies:
-```bash
-npm install
-```
+Copy-Item .env.example .env
 
-Start the Vite development server:
-```bash
-npm run dev
-```
-The frontend application will be running at `http://localhost:3000`.
+Then configure the values inside ".env".
 
-## Environment Variables
+Example
 
-Copy `.env.example` to `.env` in the root directory to configure environment variables:
-
-```env
-# Environment & Server Settings
 ENVIRONMENT=development
 CURRENT_F1_SEASON=2026
+
 SECRET_KEY=your-secret-key-here
 
-# Service Ports
 PORT_FRONTEND=3000
 PORT_BACKEND=8000
 PORT_POSTGRES=5432
 
-# Database Configuration (PostgreSQL)
 DATABASE_URL=postgresql+asyncpg://f1_user:f1_password@localhost:5432/f1_analytics
 
-# External API URLs
 JOLPICA_BASE_URL=https://api.jolpi.ca/ergast/f1
 OPENF1_BASE_URL=https://api.openf1.org/v1
+
 FASTF1_CACHE_DIR=/tmp/fastf1_cache
-```
 
-## API Endpoints
+«⚠️ Never commit your actual ".env" file or production secrets to GitHub.»
 
-Key endpoints provided by the backend API:
+The repository only contains ".env.example" with placeholder values.
 
-- `GET /api/v1/health` - Backend service status check
-- `GET /api/v1/calendar` - Race schedules by season
-- `GET /api/v1/standings/drivers` - Driver championship standings
-- `GET /api/v1/standings/constructors` - Constructor championship standings
-- `GET /api/v1/drivers` - Driver directory and profile data
-- `GET /api/v1/constructors` - Constructor directory and profile data
-- `GET /api/v1/circuits` - Circuit information and specs
-- `GET /api/v1/results/sessions/{session_id}/results` - Session race results
-- `GET /api/v1/analytics/championship-progression` - Driver points progression chart data
-- `GET /api/v1/analytics/compare` - Head-to-head driver comparison stats
-- `GET /api/v1/historical/seasons` - Historical F1 archive seasons
-- `GET /api/v1/news` - Formula 1 news feed
-- `GET /api/v1/weather/{race_id}` - Race location weather reports
+---
+
+🐍 Backend Setup
+
+Navigate to the backend directory:
+
+cd backend
+
+Create a virtual environment:
+
+Windows
+
+python -m venv venv
+venv\Scripts\activate
+
+macOS/Linux
+
+python3 -m venv venv
+source venv/bin/activate
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Start the FastAPI development server:
+
+uvicorn app.main:app --reload --port 8000
+
+The API documentation will be available at:
+
+http://localhost:8000/docs
+
+---
+
+⚛️ Frontend Setup
+
+Open another terminal and navigate to the frontend:
+
+cd frontend
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+The frontend will be available at:
+
+http://localhost:3000
+
+---
+
+🔌 API Endpoints
+
+The backend exposes RESTful endpoints for accessing F1 data.
+
+Method| Endpoint| Description
+GET| "/api/v1/health"| Backend health check
+GET| "/api/v1/calendar"| Season race calendar
+GET| "/api/v1/standings/drivers"| Driver standings
+GET| "/api/v1/standings/constructors"| Constructor standings
+GET| "/api/v1/drivers"| Driver directory
+GET| "/api/v1/constructors"| Constructor directory
+GET| "/api/v1/circuits"| Circuit information
+GET| "/api/v1/results/sessions/{session_id}/results"| Session results
+GET| "/api/v1/analytics/championship-progression"| Championship progression
+GET| "/api/v1/analytics/compare"| Driver comparison
+GET| "/api/v1/historical/seasons"| Historical seasons
+GET| "/api/v1/news"| F1 news feed
+GET| "/api/v1/weather/{race_id}"| Race weather information
+
+Interactive API documentation is available through FastAPI's Swagger UI at:
+
+http://localhost:8000/docs
+
+---
+
+📡 Data Sources
+
+Jolpica F1 API
+
+Used for Ergast-compatible historical Formula 1 data including:
+
+- Race schedules
+- Race results
+- Driver standings
+- Constructor standings
+- Historical seasons
+
+OpenF1
+
+Used for recent Formula 1 session and timing information.
+
+FastF1
+
+Used for:
+
+- Telemetry
+- Lap timing
+- Session data
+- Driver analytics
+- F1 data processing
+
+Open-Meteo
+
+Used as a weather data provider for circuit locations.
+
+---
+
+🔐 Environment & Security
+
+Environment-specific configuration is handled through environment variables.
+
+The repository includes:
+
+.env.example
+
+but the actual:
+
+.env
+
+file should remain local and must never contain production secrets committed to GitHub.
+
+---
+
+📈 Future Improvements
+
+Planned improvements include:
+
+- [ ] Live race timing
+- [ ] Advanced driver telemetry comparison
+- [ ] Sector-by-sector performance analysis
+- [ ] Tyre strategy visualization
+- [ ] Race replay analytics
+- [ ] More detailed circuit telemetry
+- [ ] Automated data ingestion
+- [ ] Improved caching
+- [ ] Background data processing
+- [ ] Authentication and personalized dashboards
+- [ ] Mobile-focused UI improvements
+- [ ] Expanded historical analytics
+
+---
+
+🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+Basic workflow
+
+git checkout -b feature/your-feature
+
+Make your changes, test them locally, then commit:
+
+git add .
+git commit -m "feat: add your feature"
+
+Push your branch:
+
+git push origin feature/your-feature
+
+Then open a Pull Request.
+
+---
+
+📄 License
+
+This project is currently intended as a personal/educational project.
+
+If you plan to distribute the project publicly, consider adding an explicit open-source license such as MIT.
+
+---
+
+👨‍💻 Author
+
+Jithendra Yatam
+
+Information Technology Student
+NIT Srinagar
+
+Project
+
+🏎️ F1 Hub
+
+🌐 Live Demo: https://f1-hub-olive.vercel.app
+
+📦 Repository: https://github.com/jithendra847/f1-hub
+
+---
+
+⭐ Support
+
+If you find this project interesting, consider giving the repository a ⭐ on GitHub.
